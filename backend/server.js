@@ -3,6 +3,7 @@ var cors = require('cors')
 var bodyParser = require('body-parser')
 var app = express()
 const mongoose = require('mongoose')
+require('dotenv').config();
 
 var port = process.env.PORT || 5000
 
@@ -15,7 +16,7 @@ app.use(
 )
 app.use('/public', express.static('public'));
 
-const mongoURI = ''    //Database 
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017'    //Database 
 
 mongoose
   .connect(
